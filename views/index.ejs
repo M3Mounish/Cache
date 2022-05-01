@@ -1,0 +1,21 @@
+    <%- include ('partials/header.ejs') %>
+    <header>
+      <h1 class="title">Cache</h1>
+      <h4 class="motto">A Simplified CRUD</h4>
+    </header>
+
+    <form class="" action="/" method="post">
+      <input type="text" name="noteTitle">
+      <input type="text" name="noteContent">
+      <button type="submit" name="submit">+</button>
+    </form>
+
+    <%  notes.forEach(function(note){ %>
+
+      <h1><%=note.title%></h1>
+      <p><%= note.data %></p>
+      <% }) %>
+
+
+
+    <!-- <script src= "../src/index.js" charset="utf-8"></script> -->
