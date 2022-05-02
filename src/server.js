@@ -4,13 +4,14 @@ const path = require("path");
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 
+
 const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', '../views');
 app.use(express.static('public'));
 
-mongoose.connect('mongodb://localhost:27017/cacheDb');
+mongoose.connect('mongodb+srv://M3:m3-mongodb@cluster0.sykgz.mongodb.net/cacheDB?retryWrites=true&w=majority');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -25,7 +26,6 @@ app.route('/')
 
 .get((req , res) => {
   Note.find({}, function(err, cbNote) {
-    console.log(cbNote.title);
     res.render('index', {
       notes: cbNote
 
@@ -50,6 +50,19 @@ app.route('/')
 }
 )
 
+app.get('/delete/:someId' , (req , res) => {
+   const reqId = req.params.someId;
+
+   Note.deleteMany({_id:reqId} , (err) => {
+     if (err) {
+       console.log(err);
+     }else {
+       console.log("Deleted successfully");
+     }
+   })
+
+  res.redirect('/');
+})
 
 
 app.listen(3000 , () => {

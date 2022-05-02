@@ -1,19 +1,38 @@
     <%- include ('partials/header.ejs') %>
-    <header>
-      <h1 class="title">Cache</h1>
-      <h4 class="motto">A Simplified CRUD</h4>
-    </header>
+<!-- <link rel="stylesheet" href="F:\Mouni\Progamming\Web-Developement\own projects\Me tryin'\Connecting the dots(technologies)\public\styles.css"> -->
+  <body class="bg-zinc-800 text-neutral-100">
 
-    <form class="" action="/" method="post">
-      <input type="text" name="noteTitle">
-      <input type="text" name="noteContent">
-      <button type="submit" name="submit">+</button>
-    </form>
+    <div class="mx-14">
+      <header class="text-white ">
+        <h1 class="font-semibold text-3xl font-sans">Cache</h1>
+        <h4 class="font-light text-sm font-mono">a simplified CRUD</h4>
+      </header>
+    </div>
+
+    <div class="mx-14">
+      <form class="" action="/" method="post">
+        <div class="bg-transparent self-center relative left-36 object-center">
+          <input class="rounded transparent" type="text" name="noteTitle">
+          <input class="rounded transparent" type="text" name="noteContent">
+          <button class="bg-slate-400 rounded hover:bg-slate-700 px-6 py-auto" type="submit" name="submit">+</button>
+        </div>
+
+      </form>
+    </div>
+
 
     <%  notes.forEach(function(note){ %>
 
-      <h1><%=note.title%></h1>
-      <p><%= note.data %></p>
+      <div class="mx-14 border-solid border-slate-100 float-left border-2 p-3 m-3 h-auto bg-transparent rounded">
+        <h1 class=text-lg text-bold contenteditable="true"><%=note.title%></h1>
+        <p class="text-base font-mono" contenteditable="true"><%= note.data %></p>
+        <a href="/delete/<%= note._id %>"><i class="fa-solid fa-trash"></i></a>
+      </div>
+
+  </body>
+
+
+
       <% }) %>
 
 
